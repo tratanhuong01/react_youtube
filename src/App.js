@@ -1,17 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
-import Header from "./components/Header/Header";
-import Content from "./components/Content/Content";
-
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import routes from "./routes/routes";
+import * as viewsAction from "./actions/view/index";
+import { useDispatch } from "react-redux";
 function App(props) {
-  const [videos, setVideos] = useState([
+  //
+  const videos = [
     {
       id: "1",
-      name: "Đen - một triệu like ft. Thành Đồng (M/V)",
+      name: "Cậu bé nhà quê thử lòng chó và cái kết",
       tag: "#mottrieulike #LộnXộn5 #Đen",
-      url: "image/1.PNG",
-      poster: "Đen Vâu",
+      url: "https://i9.ytimg.com/vi_webp/yKwIcQxAhRU/mqdefault.webp?v=59a11f47&sqp=CKyQ5IsG&rs=AOn4CLCiqtBAhiyme5GN6RRtL0NOpEPVpA",
+      poster: "Hưởng vlog",
       avatar: "",
+      slug: "cau-be-nha-que-thu-long-cho-va-cai-ket",
+      file: "cau_be_nha_que_thu_long_cho_va_cai_ket",
       view: "63.098.234 lượt xem",
       time: "19 thg 1, 2020",
       like: "19 N",
@@ -20,9 +24,26 @@ function App(props) {
     },
     {
       id: "2",
-      name: "Tình Yêu Màu Hồng (Lofi Ver.) - Hồ Văn Quý x Xám x Freak D",
+      name: "Cuộc sống hoang dã || Hến sông chấm muối ớt",
+      slug: "cuoc-song-hoang-gia-hen-song-cham-moi-ot",
+      file: "cuoc_song_hoang_gia_hen_song_cham_moi_ot",
       tag: "#freakd​ #lofi​ #tinhyeumauhong",
-      url: "image/2.PNG",
+      url: "https://i9.ytimg.com/vi_webp/43Eu2hSiKBc/mqdefault.webp?v=5b1330ab&sqp=CKyQ5IsG&rs=AOn4CLBEjE1w9KsWiZ4P9ErVgd3-H7aJVA",
+      avatar: "",
+      poster: "Hưởng vlog",
+      view: "7.098.234 lượt xem",
+      time: "04 thg 01, 2021",
+      like: "19 N",
+      dislike: "1,1 N",
+      isRegister: true,
+    },
+    {
+      id: "3",
+      name: "Nhạc lofi chill || Dịu dàng là ngày em đến ...",
+      slug: "nhac-lofi-chill-dieu-dang-la-ngay-em-den",
+      file: "nhac_lofi_chill_dieu_dang_la_ngay_em_den",
+      tag: "#freakd​ #lofi​ #tinhyeumauhong",
+      url: "https://i.ytimg.com/vi/zzY3HAmwr1E/maxresdefault.jpg",
       avatar: "",
       poster: "Freak D Music",
       view: "7.098.234 lượt xem",
@@ -32,85 +53,59 @@ function App(props) {
       isRegister: true,
     },
     {
-      id: "3",
-      name: "BINZ x ĐEN - CHO MÌNH EM (Studio Session)",
-      tag: "#ChoMinhEm #Binz #Den",
-      url: "image/3.PNG",
-      avatar: "",
-      poster: "Binz Da Poet",
-      view: "24.742.474 lượt xem",
-      time: "26 thg 3, 2020",
-      like: "19 N",
-      dislike: "1,1 N",
-      isRegister: false,
-    },
-    {
       id: "4",
-      name: "Vì Ngày Hôm Nay Em Cưới Rồi, Chẳng Thể Tìm Được Em..",
-      tag: "#HaSang #changthetimduocem #lofibuon",
-      url: "image/4.PNG",
+      name: "Cuộc sống hoang dã || Nấu mỳ tơm trong ống tre ",
+      slug: "cuoc-song-hoang-da-nau-my-tom-trong-ong-tre",
+      file: "cuoc_song_hoang_da_nau_my_tom_trong_ong_tre",
+      tag: "#freakd​ #lofi​ #tinhyeumauhong",
+      url: "https://i9.ytimg.com/vi/QZ2EzCoUWwI/mq2.jpg?sqp=CIic5IsG&rs=AOn4CLB4PELmD7kbK70oUDDzMv5QdZuiGw",
       avatar: "",
-      poster: "Hạ sang",
-      view: "4.742.474 lượt xem",
-      time: "8 thg 12, 2020",
+      poster: "Hưởng vlog",
+      view: "7.098.234 lượt xem",
+      time: "04 thg 01, 2021",
       like: "19 N",
       dislike: "1,1 N",
-      isRegister: false,
+      isRegister: true,
     },
     {
       id: "5",
-      name: "MV Thế Phong Tình - BlackBi ft DT ft Elbi || FAPtv",
-      tag: "#faptv #the_phong_tinh",
-      url: "image/5.PNG",
+      name: "Anh hưởng review về cốc lắc rơm #Seri#1",
+      slug: "anh-huong-review-ve-coc-lac-seri-1",
+      file: "anh_huong_review_ve_coc_lac_seri_1",
+      tag: "#freakd​ #lofi​ #tinhyeumauhong",
+      url: "https://i9.ytimg.com/vi_webp/bMi-R_Qv0f4/mqdefault.webp?v=5b663771&sqp=CLSe5IsG&rs=AOn4CLCX_4GjvkX3N1lLPaATxmBae1slTw",
       avatar: "",
-      poster: "FAPTV",
-      view: "16.742.474 lượt xem",
-      time: "9 thg 1, 2020",
+      poster: "Đời Sống Anh Hưởng",
+      view: "7.098.234 lượt xem",
+      time: "04 thg 01, 2021",
       like: "19 N",
       dislike: "1,1 N",
-      isRegister: false,
+      isRegister: true,
     },
-    {
-      id: "6",
-      name: "SAO CHA KHÔNG - PHAN MẠNH QUỲNH | OFFICIAL MV | OST BỐ GIÀ 2021",
-      tag: "#BoGia​ #BoGiaDienAnh​​ #TranThanh​",
-      url: "image/6.PNG",
-      avatar: "",
-      poster: "Trấn Thành Town",
-      view: "16.320.049 lượt xem",
-      time: "12 thg 3, 2021",
-      like: "19 N",
-      dislike: "1,1 N",
-      isRegister: false,
-    },
-    {
-      id: "7",
-      name: "3107-2 - Sau Này Liệu Chúng Ta - Sợ Lắm 2 ft. Hẹn Yêu - P2",
-      tag: "#lofi​ #chill",
-      url: "image/7.PNG",
-      avatar: "",
-      poster: "Pii Music",
-      view: "13.324.029 lượt xem",
-      time: "5 thg 3, 2021",
-      like: "19 N",
-      dislike: "1,1 N",
-      isRegister: false,
-    },
-  ]);
+  ];
+  const dispatch = useDispatch();
+  useEffect(() => {
+    //
+    dispatch(viewsAction.updateInformation("videos", videos));
+    //
+  }, []);
+  //
   return (
-    <>
-      <Header />
-      <Content
-        setVideos={setVideos}
-        videos={videos}
-        onRegisterChanel={(video) => {
-          const index = videos.findIndex((dt) => dt.id === video.id);
-          let data = [...videos];
-          data[index].isRegister = !data[index].isRegister;
-          setVideos(data);
-        }}
-      />
-    </>
+    <Router>
+      <Switch>
+        {routes &&
+          routes.map((route, index) => {
+            return (
+              <Route
+                key={index}
+                path={route.path}
+                exact={route.exact}
+                component={route.main}
+              />
+            );
+          })}
+      </Switch>
+    </Router>
   );
 }
 

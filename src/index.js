@@ -2,11 +2,21 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
+import { Provider } from "react-redux";
+import { applyMiddleware, createStore } from "redux";
+import { ThroughProvider } from "react-through";
+import thunk from "redux-thunk";
+import myReducer from "./reducers";
 import reportWebVitals from "./reportWebVitals";
 
+const store = createStore(myReducer, applyMiddleware(thunk));
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <ThroughProvider>
+        <App />
+      </ThroughProvider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );

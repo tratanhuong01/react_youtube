@@ -1,14 +1,16 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import VideoChild from "./VideoChild/VideoChild";
 
-function ContentRight({ onLoadUI, videos }) {
+function ContentRight(props) {
+  //
+  const view = useSelector((state) => state.view);
+  //
   return (
     <div className="w-30% px-2">
-      {videos &&
-        videos.map((video) => {
-          return (
-            <VideoChild onLoadUI={onLoadUI} video={video} key={video.id} />
-          );
+      {view.videos &&
+        view.videos.map((video) => {
+          return <VideoChild video={video} key={video.id} />;
         })}
     </div>
   );

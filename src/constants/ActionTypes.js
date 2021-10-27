@@ -1,0 +1,3 @@
+export const UPDATE_INFORMATION = "UPDATE_INFORMATION";
+//
+export const RESET_VIEW = "RESET_VIEW";

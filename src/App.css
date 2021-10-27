@@ -36,18 +36,35 @@
     transform: rotate(360deg);
   }
 }
+*:focus {
+  outline: none;
+}
 .h-32rem {
   height: 32rem;
+}
+.h-40rem {
+  height: 40rem;
 }
 .w-70\% {
   width: 70%;
 }
+
 .w-30\% {
   width: 30%;
 }
 .text-xxs {
   font-size: 7px;
 }
-.hover__space .space {
-  
+.item {
+  display: none;
+}
+.hover__item:hover .item {
+  display: flex;
+}
+
+.item__block {
+  display: none;
+}
+.hover__item__block:hover .item__block {
+  display: block;
 }

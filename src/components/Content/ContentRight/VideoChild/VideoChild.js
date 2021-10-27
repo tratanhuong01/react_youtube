@@ -1,17 +1,42 @@
 import React from "react";
-
-function VideoChild({ onLoadUI, video }) {
+import { useHistory } from "react-router";
+import { PAGE_VIEW } from "../../../../constants/Config";
+import * as viewsAction from "../../../../actions/view/index";
+import { useDispatch } from "react-redux";
+function VideoChild({ video, index }) {
+  //
+  const dispatch = useDispatch();
+  const history = useHistory();
+  //
   return (
     <div
-      onClick={() => onLoadUI(video)}
-      className="w-full ml-2 flex py-2 cursor-pointer"
+      className={`${index ? "m-2" : "ml-2 flex py-2"} cursor-pointer`}
+      style={index ? { width: "calc(25% - 24px)" } : { width: "100%" }}
     >
-      <div className="w-5/12 pr-3 pt-2">
-        <img src={process.env.PUBLIC_URL + video.url} alt="" />
+      <div
+        onClick={async () => {
+          await dispatch(viewsAction.updateInformation("reset", true));
+          await history.push(`${PAGE_VIEW}/${video.slug}`);
+        }}
+        className={`${index ? "w-full mb-2" : "w-5/12 pr-3 pt-2"}`}
+      >
+        <img
+          src={process.env.PUBLIC_URL + video.url}
+          alt=""
+          className={`w-full ${index ? "h-44" : "h-20"} object-cover `}
+        />
       </div>
-      <div className="w-7/12">
-        <p className="font-bold text-sm">{video.name}</p>
-        <div className="text-gray-600">
+      <div className={`${index ? "w-full" : "w-7/12"}`}>
+        <p
+          onClick={async () => {
+            await dispatch(viewsAction.updateInformation("reset", true));
+            await history.push(`${PAGE_VIEW}/${video.slug}`);
+          }}
+          className="font-bold text-sm flex"
+        >
+          {video.name}
+        </p>
+        <div className="text-gray-600 mt-1.5">
           <p className="text-sm">
             {video.poster} <i className="bx bxs-check-circle"></i>
           </p>

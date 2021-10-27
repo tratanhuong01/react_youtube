@@ -1,22 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
+import { useSelector } from "react-redux";
 import ContentLeft from "./ContentLeft/ContentLeft";
 import ContentRight from "./ContentRight/ContentRight";
 
-function Content({ videos, onRegisterChanel }) {
+function Content(props) {
   //
-  const [videoMain, setVideoMain] = useState(videos[0]);
+  const view = useSelector((state) => state.view);
   //
   return (
-    <div className="w-full mt-16">
-      <div className="w-11/12 mx-auto bg-white p-2 flex">
-        {videoMain && (
+    <div className="w-full">
+      <div
+        className={`${
+          view.zoomIn ? "w-full" : "w-11/12 p-2"
+        } mx-auto bg-white flex`}
+      >
+        {view.video && (
           <>
-            <ContentLeft
-              videoMain={videoMain}
-              onLoadUI={setVideoMain}
-              onRegisterChanel={onRegisterChanel}
-            />
-            <ContentRight videos={videos} onLoadUI={setVideoMain} />
+            <ContentLeft />
+            {!view.zoomIn && <ContentRight />}
           </>
         )}
       </div>

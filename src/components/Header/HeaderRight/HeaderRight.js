@@ -1,22 +1,16 @@
 import React from "react";
-
+import avatar from "../../../assets/images/avatar.jpg";
 function HeaderRight(props) {
   return (
-    <div className="w-1/5">
-      <ul className="flex justify-end">
-        <li className="py-2 px-2.5 text-2xl text-gray-600">
-          <i className="bx bxs-video-plus"></i>
-        </li>
-        <li className="py-2 px-2.5 text-2xl text-gray-600">
-          <i className="bx bxs-category"></i>
-        </li>
-        <li className="py-2 px-2.5 text-2xl text-gray-600">
-          <i className="bx bxs-bell"></i>
-        </li>
-        <li className="py-1 px-2.5 text-4xl text-gray-600">
-          <i className="bx bxs-user-circle"></i>
-        </li>
-      </ul>
+    <div className="w-1/5 mt-1 flex justify-end items-center text-gray-600 text-2xl ">
+      <i className="bx bx-video-plus mx-3"></i>
+      <i className="bx bxs-grid mx-3"></i>
+      <i className="bx bx-bell mx-3"></i>
+      <img
+        src={avatar}
+        alt=""
+        className="w-9 h-9 border-2 border-solid border-gray-500 rounded-full mx-3 object-cover"
+      />
     </div>
   );
 }
