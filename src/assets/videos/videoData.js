@@ -1,12 +1,12 @@
-import cau_be_nha_que_thu_long_cho_va_cai_ket from "./cau_be_nha_que_thu_long_cho_va_cai_ket.mp4";
-import cuoc_song_hoang_gia_hen_song_cham_moi_ot from "./cuoc_song_hoang_gia_hen_song_cham_moi_ot.mp4";
-import nhac_lofi_chill_dieu_dang_la_ngay_em_den from "./nhac_lofi_chill_dieu_dang_la_ngay_em_den.mp4";
-import cuoc_song_hoang_da_nau_my_tom_trong_ong_tre from "./cuoc_song_hoang_da_nau_my_tom_trong_ong_tre.mp4";
-import anh_huong_review_ve_coc_lac_seri_1 from "./anh_huong_review_ve_coc_lac_seri_1.mp4";
+import alan_walker_vs_coldplay_hymn_for_the_weekend from "./alan_walker_vs_coldplay_hymn_for_the_weekend.mp4";
+import vexento_nostalgia from "./vexento_nostalgia.mp4";
+import vexento_devotion from "./vexento_devotion.mp4";
+import vexento_dbeautiful_dream from "./vexento_dbeautiful_dream.mp4";
+import late_night_sad_chill_lofi_piano_beat from "./late_night_sad_chill_lofi_piano_beat.mp4";
 export {
-  cau_be_nha_que_thu_long_cho_va_cai_ket,
-  cuoc_song_hoang_gia_hen_song_cham_moi_ot,
-  nhac_lofi_chill_dieu_dang_la_ngay_em_den,
-  cuoc_song_hoang_da_nau_my_tom_trong_ong_tre,
-  anh_huong_review_ve_coc_lac_seri_1,
+  vexento_nostalgia,
+  vexento_devotion,
+  vexento_dbeautiful_dream,
+  late_night_sad_chill_lofi_piano_beat,
+  alan_walker_vs_coldplay_hymn_for_the_weekend,
 };

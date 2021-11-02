@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as viewsAction from "../../../../../../actions/view/index";
 function VolumeEdit({ refVideo }) {
@@ -11,6 +11,7 @@ function VolumeEdit({ refVideo }) {
     if (refVideo && refVideo.current) {
       refVideo.current.volume = view.volume / 100;
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const eventMouse = (e) => {
     const rect = e.target.getBoundingClientRect();

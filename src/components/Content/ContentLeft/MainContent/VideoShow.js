@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef } from "react";
 import ProcessVideo from "./ProcessVideo/ProcessVideo";
 import { useDispatch, useSelector } from "react-redux";
 import * as viewsAction from "../../../../actions/view/index";
@@ -11,7 +11,8 @@ function VideoShow(props) {
   const view = useSelector((state) => state.view);
   const refSecCurrent = useRef(null);
   const history = useHistory();
-  useEffect(() => {
+  useLayoutEffect(() => {
+    //
     let timeOut = null;
     if (refVideo && refVideo.current) {
       refVideo.current.currentTime = view.secCurrent + 2;
@@ -57,9 +58,11 @@ function VideoShow(props) {
       document.removeEventListener("keyup", onKeyUp, true);
       document.removeEventListener("keydown", onKeyDown);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [view.video]);
   const refVideo = useRef(null);
   useEffect(() => {
+    //
     if (refVideo && refVideo.current) {
       if (!view.play) {
         refVideo.current.pause();
@@ -67,8 +70,10 @@ function VideoShow(props) {
         refVideo.current.play();
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [view.play]);
   useEffect(() => {
+    //
     let interval = null;
     if (view.secCurrent >= view.sec) {
       clearInterval(interval);
@@ -89,14 +94,17 @@ function VideoShow(props) {
     return () => {
       clearInterval(interval);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [view.play, view.secCurrent, view.video]);
   useEffect(() => {
+    //
     if (view.zoomFullScreen)
       document.getElementsByTagName("body")[0].classList.add("overflow-hidden");
     else
       document
         .getElementsByTagName("body")[0]
         .classList.remove("overflow-hidden");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [view.zoomFullScreen]);
   //
   return (
@@ -153,6 +161,7 @@ function VideoShow(props) {
           </div>
         )}
         <video
+          id="videoData"
           onClick={() => {
             dispatch(viewsAction.updateInformation("loadingPlay", true));
             dispatch(viewsAction.updateInformation("play", !view.play));

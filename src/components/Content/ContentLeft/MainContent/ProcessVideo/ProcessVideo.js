@@ -1,7 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import VolumeEdit from "./VolumeEdit/VolumeEdit";
 import * as viewsAction from "../../../../../actions/view/index";
+import PreviewVideoMini from "./PreviewVideoMini/PreviewVideoMini";
 function ProcessVideo({ refVideo }) {
   //
   const dispatch = useDispatch();
@@ -10,6 +11,7 @@ function ProcessVideo({ refVideo }) {
   const refReal = useRef(null);
   const refFake = useRef(null);
   const refMain = useRef(null);
+  const refPreview = useRef(null);
   const toggleFullScreen = () => {
     dispatch(
       viewsAction.updateInformation("zoomFullScreen", !view.zoomFullScreen)
@@ -43,10 +45,31 @@ function ProcessVideo({ refVideo }) {
   };
   //
   return (
-    <div className="w-full absolute bottom-0 item__block">
+    <div className="w-full absolute bottom-0 item__block bg-black bg-opacity-50">
       <div className="w-full">
         <ul className="w-full relative">
+          <PreviewVideoMini
+            refVideo={refVideo}
+            show={show}
+            refMain={refMain}
+            refReal={refReal}
+            refFake={refFake}
+            refPreview={refPreview}
+          />
           <li
+            onMouseEnter={(e) => {
+              setShow(true);
+              const rect = e.target.getBoundingClientRect();
+              const left = e.clientX - rect.left; //x position within the element.
+              if (refPreview && refPreview.current) {
+                if (left > 100) {
+                  refPreview.current.style.left = left - 110 + "px";
+                } else {
+                  refPreview.current.style.left = 8 + "px";
+                }
+              }
+            }}
+            onMouseLeave={() => setShow(false)}
             onClick={async (e) => {
               const rect = e.target.getBoundingClientRect();
               const left = e.clientX - rect.left; //x position within the element.
@@ -89,6 +112,13 @@ function ProcessVideo({ refVideo }) {
                 refFake.current.style.width =
                   left - refReal.current.offsetWidth + "px";
                 setShow(true);
+                if (refPreview && refPreview.current) {
+                  if (left > 100) {
+                    refPreview.current.style.left = left - 110 + "px";
+                  } else {
+                    refPreview.current.style.left = 8 + "px";
+                  }
+                }
               }
             }}
             onMouseLeave={() => setShow(false)}

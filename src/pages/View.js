@@ -23,6 +23,7 @@ function View({ match }) {
       } else {
         dispatch(viewsAction.updateInformation("video", view.videos[index]));
       }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [match.match.params.slug, view.videos, view.reset]);
   //
   return <MainPage>{view.video && <Content />}</MainPage>;

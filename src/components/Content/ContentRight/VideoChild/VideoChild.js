@@ -32,7 +32,7 @@ function VideoChild({ video, index }) {
             await dispatch(viewsAction.updateInformation("reset", true));
             await history.push(`${PAGE_VIEW}/${video.slug}`);
           }}
-          className="font-bold text-sm flex"
+          className="font-bold text-sm w-full whitespace-nowrap overflow-ellipsis overflow-hidden"
         >
           {video.name}
         </p>

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import VideoShow from "./MainContent/VideoShow";
 import InfoVideo from "./MainContent/InfoVideo/InfoVideo";
 import DetailVideo from "./MainContent/DetailVideo/DetailVideo";

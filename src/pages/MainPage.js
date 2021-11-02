@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import VideoShow from "../components/Content/ContentLeft/MainContent/VideoShow";
@@ -10,6 +10,7 @@ function MainPage(props) {
   const history = useHistory();
   useEffect(() => {
     if (view.zoomOut === true) history.push("");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [view.zoomOut]);
   //
   return (
