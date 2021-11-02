@@ -45,7 +45,7 @@ function ProcessVideo({ refVideo }) {
   };
   //
   return (
-    <div className="w-full absolute bottom-0 item__block bg-black bg-opacity-50">
+    <div className="w-full absolute bottom-0 item__block bg-black bg-opacity-50 process__video">
       <div className="w-full">
         <ul className="w-full relative">
           <PreviewVideoMini
@@ -92,12 +92,12 @@ function ProcessVideo({ refVideo }) {
               }
             }}
             ref={refReal}
-            className="absolute pt-1.5 bg-red-600 cursor-pointer"
+            className="absolute pt-1.5 bg-red-600 cursor-pointer z-50"
             style={{ width: `${(view.secCurrent / view.sec) * 100}%` }}
           ></li>
           <li
             ref={refFake}
-            className={` pt-1.5 bg-gray-300 cursor-pointer w-40 absolute z-50 ${
+            className={` pt-1.5 bg-gray-300 cursor-pointer w-40 absolute z-40 ${
               show ? "" : "hidden"
             }`}
           ></li>
@@ -122,13 +122,13 @@ function ProcessVideo({ refVideo }) {
               }
             }}
             onMouseLeave={() => setShow(false)}
-            className="w-full  pt-1.5 bg-gray-500 cursor-pointer"
+            className="ml-auto pt-1.5 w-full bg-gray-500 cursor-pointer"
           ></li>
         </ul>
       </div>
       <div className="w-full flex">
-        <div className="w-7/12">
-          <ul className="text-white font-bold flex items-center">
+        <div className="w-2/3 md:w-7/12">
+          <ul className="text-white md:font-bold flex items-center">
             <li
               onClick={() => {
                 if (refVideo.current)
@@ -146,7 +146,7 @@ function ProcessVideo({ refVideo }) {
               <i className="bx bx-skip-next cursor-pointer"></i>
             </li>
             <VolumeEdit refVideo={refVideo} />
-            <li className={`px-2 text-sm flex items-center ml-4`}>
+            <li className={`px-2 md:text-sm flex items-center ml-4 text-xs`}>
               {`${
                 Math.floor(view.secCurrent / 3600) < 10
                   ? `0${Math.floor(view.secCurrent / 3600)}`
@@ -179,7 +179,7 @@ function ProcessVideo({ refVideo }) {
             </li>
           </ul>
         </div>
-        <div className="w-5/12 flex justify-end">
+        <div className="w-1/3 md:w-5/12 flex justify-end">
           <ul className="text-white font-bold flex">
             {!view.zoomOut && !view.zoomFullScreen && (
               <li
@@ -196,7 +196,7 @@ function ProcessVideo({ refVideo }) {
               <i className="fas fa-cog cursor-pointer"></i>
               <div
                 className="w-4 h-4 text-xxs top-0.5 right-0 text-white absolute rounded-full
-                 flex justify-center  items-center bg-red-600 font-bold"
+                  justify-center  items-center bg-red-600 font-bold md:flex hidden"
               >
                 HD
               </div>

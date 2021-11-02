@@ -11,13 +11,13 @@ function Content(props) {
     <div className="w-full">
       <div
         className={`${
-          view.zoomIn ? "w-full" : "w-11/12 p-2"
+          view.zoomIn ? "w-full" : "content__main__app p-2"
         } mx-auto bg-white flex`}
       >
         {view.video && (
           <>
             <ContentLeft />
-            {!view.zoomIn && <ContentRight />}
+            {!view.zoomIn && <ContentRight type="right" />}
           </>
         )}
       </div>

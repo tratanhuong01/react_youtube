@@ -6,14 +6,14 @@ function DetailVideo({ onRegisterChanel, video }) {
       className="w-full py-5 border-gray-200 border-b-2 border-solid 
         flex relative"
     >
-      <div className="w-1/12">
+      <div className="">
         <img
           src={process.env.PUBLIC_URL + video.url}
-          className="w-14 h-14 object-cover rounded-full"
+          className="w-14 h-14 mr-4 object-cover rounded-full"
           alt=""
         />
       </div>
-      <div className="w-11/12">
+      <div className="block">
         <p className="text-sm pt-4   font-bold">
           {process.env.PUBLIC_URL + video.poster}
           <i className="bx bxs-check-circle ml-1"></i>

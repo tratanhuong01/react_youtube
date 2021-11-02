@@ -3,6 +3,7 @@ import { useHistory } from "react-router";
 import { PAGE_VIEW } from "../../../../constants/Config";
 import * as viewsAction from "../../../../actions/view/index";
 import { useDispatch } from "react-redux";
+
 function VideoChild({ video, index }) {
   //
   const dispatch = useDispatch();
@@ -10,8 +11,10 @@ function VideoChild({ video, index }) {
   //
   return (
     <div
-      className={`${index ? "m-2" : "ml-2 flex py-2"} cursor-pointer`}
-      style={index ? { width: "calc(25% - 24px)" } : { width: "100%" }}
+      className={`${
+        index ? "m-2 item__video__child" : "ml-2 flex py-2 item__video__child"
+      } cursor-pointer`}
+      style={index ? {} : { width: "100%" }}
     >
       <div
         onClick={async () => {
@@ -23,7 +26,7 @@ function VideoChild({ video, index }) {
         <img
           src={process.env.PUBLIC_URL + video.url}
           alt=""
-          className={`w-full ${index ? "h-44" : "h-20"} object-cover `}
+          className={`w-full ${index ? "h-44 img-500" : "h-24"} object-cover `}
         />
       </div>
       <div className={`${index ? "w-full" : "w-7/12"}`}>

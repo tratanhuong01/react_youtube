@@ -2,7 +2,7 @@ import React from "react";
 
 function FeelOrShare(props) {
   return (
-    <div className="w-2/3">
+    <div className="lg:w-2/3 w-full">
       <ul className="flex justify-end">
         <li className="px-3 py-0.5 text-gray-600 flex justify-center items-center">
           <i className="bx bxs-like text-2xl mr-2"></i> 26 N

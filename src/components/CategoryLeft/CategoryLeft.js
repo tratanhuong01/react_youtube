@@ -114,7 +114,7 @@ function CategoryLeft({ refCategoryLeft }) {
   return (
     <div
       ref={refCategoryLeft}
-      className="w-2/12 h-screen top-0 pt-16 mt-4 overflow-hidden fixed"
+      className="w-20 md:w-60 h-screen top-0 pt-16 mt-4 overflow-hidden fixed"
     >
       <div className="w-full h-full overflow-scroll box-content pr-4">
         {categoriesIcon.map((category) => {
@@ -127,7 +127,7 @@ function CategoryLeft({ refCategoryLeft }) {
             />
           );
         })}
-        <p className="font-bold text-xm pl-4 text-gray-800 my-2">
+        <p className="font-bold text-xm pl-4 text-gray-800 my-2 hidden md:flex">
           KÊNH ĐĂNG KÍ
         </p>
         {categoriesImage.map((category) => {
@@ -140,7 +140,7 @@ function CategoryLeft({ refCategoryLeft }) {
             />
           );
         })}
-        <p className="font-bold text-xm pl-4 text-gray-800 my-2">
+        <p className="font-bold text-xm pl-4 text-gray-800 my-2  hidden md:flex">
           DỊCH VỤ KHÁC
         </p>
         {categoriesOther.map((category) => {

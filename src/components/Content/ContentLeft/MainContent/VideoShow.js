@@ -110,10 +110,12 @@ function VideoShow(props) {
   return (
     <div
       className={`hover__item__block ${
-        !view.zoomFullScreen && !view.zoomIn && !view.zoomOut && " pt-4  "
-      } ${view.zoomOut ? "fixed w-1/3 right-3  h-72 bottom-1" : "w-full"} ${
-        view.zoomFullScreen ? "fixed h-screen top-0 left-0 z-50 " : ""
-      }`}
+        !view.zoomFullScreen && !view.zoomIn && !view.zoomOut && " lg:pt-4  "
+      } ${
+        view.zoomOut
+          ? "fixed w-1/3 right-3  h-72 bottom-1"
+          : "w-full video__show__height video__show__width "
+      } ${view.zoomFullScreen ? "fixed h-screen top-0 left-0 z-50 " : ""}`}
     >
       <input ref={refSecCurrent} className="hidden" id="refSecCurrent" />
       <div
@@ -176,11 +178,11 @@ function VideoShow(props) {
               : "w-full"
           } ${
             view.zoomIn && !view.zoomOut && !view.zoomFullScreen
-              ? " h-40rem"
+              ? "video__show__height video__show__height__40rem"
               : "h-full"
           } ${
             !view.zoomIn && !view.zoomFullScreen && !view.zoomOut
-              ? " h-32rem"
+              ? "video__show__height video__show__height__32rem"
               : ""
           } ${!view.zoomOut ? " h-full" : ""} object-cover${
             view.zoomFullScreen ? " h-screen" : ""

@@ -2,7 +2,7 @@ import React from "react";
 
 function HeaderCenter(props) {
   return (
-    <div className="w-3/5 flex items-center">
+    <div className="md:w-3/5 items-center hidden md:flex">
       <div className="w-9/12 relative">
         <input
           type="text"
@@ -14,7 +14,7 @@ function HeaderCenter(props) {
       <button className="py-1 px-7 border-2 border-solid border-gray-200 bg-gray-200 ">
         <i className="bx bx-search text-gray-600"></i>
       </button>
-      <i className="bx bxs-microphone text-2xl mx-4  text-gray-600"></i>
+      <i className="bx bxs-microphone text-2xl mx-4  text-gray-600 hidden md:flex"></i>
     </div>
   );
 }
