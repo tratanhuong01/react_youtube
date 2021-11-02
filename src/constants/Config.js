@@ -1,5 +1,5 @@
 //
-export const PAGE_INDEX = "/index";
+export const PAGE_INDEX = "/";
 //
 export const PAGE_SEARCH = "/search";
 //

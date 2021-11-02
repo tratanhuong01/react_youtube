@@ -96,11 +96,6 @@
     height: 216px;
   }
 }
-@media (max-width: 630px) {
-  * {
-    font-size: 14px !important;
-  }
-}
 @media (min-width: 550px) {
   .item__video__child {
     width: calc(50% - 16px);
