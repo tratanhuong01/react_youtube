@@ -13,6 +13,8 @@ const initialState = {
   play: true,
   loadingPlay: false,
   reset: true,
+  headerZoom: true,
+  modalZ: false
 };
 
 const myReducer = (state = initialState, action) => {

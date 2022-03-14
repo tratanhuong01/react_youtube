@@ -93,13 +93,12 @@ function ProcessVideo({ refVideo }) {
             }}
             ref={refReal}
             className="absolute pt-1.5 bg-red-600 cursor-pointer z-50"
-            style={{ width: `${(view.secCurrent / view.sec) * 100}%` }}
+            style={{ width: `${Math.floor((view.secCurrent / view.sec)) * 100}%` }}
           ></li>
           <li
             ref={refFake}
-            className={` pt-1.5 bg-gray-300 cursor-pointer w-40 absolute z-40 ${
-              show ? "" : "hidden"
-            }`}
+            className={` pt-1.5 bg-gray-300 cursor-pointer w-40 absolute z-40 ${show ? "" : "hidden"
+              }`}
           ></li>
           <li
             onClick={touchTimeVideo}
@@ -137,9 +136,8 @@ function ProcessVideo({ refVideo }) {
               className="text-3xl p-1.5"
             >
               <i
-                className={`bx bx-${
-                  view.play ? "stop" : "play"
-                } cursor-pointer`}
+                className={`bx bx-${view.play ? "stop" : "play"
+                  } cursor-pointer`}
               ></i>
             </li>
             <li className="text-3xl p-1.5 flex items-center">
@@ -147,33 +145,27 @@ function ProcessVideo({ refVideo }) {
             </li>
             <VolumeEdit refVideo={refVideo} />
             <li className={`px-2 md:text-sm flex items-center ml-4 text-xs`}>
-              {`${
-                Math.floor(view.secCurrent / 3600) < 10
-                  ? `0${Math.floor(view.secCurrent / 3600)}`
-                  : Math.floor(view.secCurrent / 3600)
-              }:${
-                Math.floor((view.secCurrent % 3600) / 60) < 10
+              {`${Math.floor(view.secCurrent / 3600) < 10
+                ? `0${Math.floor(view.secCurrent / 3600)}`
+                : Math.floor(view.secCurrent / 3600)
+                }:${Math.floor((view.secCurrent % 3600) / 60) < 10
                   ? `0${Math.floor((view.secCurrent % 3600) / 60)}`
                   : Math.floor((view.secCurrent % 3600) / 60)
-              }:${
-                Math.floor((view.secCurrent % 3600) % 60) < 10
+                }:${Math.floor((view.secCurrent % 3600) % 60) < 10
                   ? `0${Math.floor((view.secCurrent % 3600) % 60)}`
                   : Math.floor((view.secCurrent % 3600) % 60)
-              }`}{" "}
+                }`}{" "}
               /{" "}
-              {`${
-                Math.floor(view.sec / 3600) < 10
-                  ? `0${Math.floor(view.sec / 3600)}`
-                  : Math.floor(view.sec / 3600)
-              }:${
-                Math.floor((view.sec % 3600) / 60) < 10
+              {`${Math.floor(view.sec / 3600) < 10
+                ? `0${Math.floor(view.sec / 3600)}`
+                : Math.floor(view.sec / 3600)
+                }:${Math.floor((view.sec % 3600) / 60) < 10
                   ? `0${Math.floor((view.sec % 3600) / 60)}`
                   : Math.floor((view.sec % 3600) / 60)
-              }:${
-                Math.floor((view.sec % 3600) % 60) < 10
+                }:${Math.floor((view.sec % 3600) % 60) < 10
                   ? `0${Math.floor((view.sec % 3600) % 60)}`
                   : Math.floor((view.sec % 3600) % 60)
-              }`}
+                }`}
               <span className="mx-1">*</span>
               Đang xem...
             </li>

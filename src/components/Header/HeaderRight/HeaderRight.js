@@ -2,7 +2,7 @@ import React from "react";
 import avatar from "../../../assets/images/avatar.jpg";
 function HeaderRight(props) {
   return (
-    <div className="md:w-1/5 w-3/4 mt-1 flex justify-end items-center text-gray-600 text-2xl ">
+    <div className="md:w-1/5 lg:w-1/5 w-3/4 mt-1 flex justify-end items-center text-gray-600 text-2xl ">
       <i className="bx bx-video-plus mx-3 hidden md:flex"></i>
       <i className="bx bxs-grid mx-3 hidden md:flex"></i>
       <i className="bx bx-bell mx-3 hidden md:flex"></i>
